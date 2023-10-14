@@ -1,30 +1,30 @@
 from pypdf import PdfReader, PdfWriter
 
-# Otevření původního PDF souboru
+# open original pdf
 with open('Gram_145.pdf', 'rb') as pdf_file:
     pdf_reader = PdfReader(pdf_file)
 
-    # Vytvoření PDF writeru pro part_1
+    # create pdf writer for part_1
     part1_pdf_writer = PdfWriter()
 
-    # Přidání první a druhé stránky do part_1
-    for page_num in range(2):  # První dvě stránky jsou na pozicích 0 a 1
+    # add firs two pages to part_1
+    for page_num in range(2):  # first two pages are at positions 0 and 1
         page = pdf_reader.pages[page_num]
         part1_pdf_writer.add_page(page)
 
-    # Vytvoření PDF writeru pro part_2
+    # create pdf writer for part_1
     part2_pdf_writer = PdfWriter()
 
-    # Přidání zbylých stránek do part_2
+    # add rest of pages to part_2
     for page_num in range(2, len(pdf_reader.pages)):
         page = pdf_reader.pages[page_num]
         part2_pdf_writer.add_page(page)
 
-    # Uložení part_1 do souboru
+    # save part_1 to file
     with open('part_1.pdf', 'wb') as part1_file:
         part1_pdf_writer.write(part1_file)
 
-    # Uložení part_2 do souboru
+    # save part_2 to file
     with open('part_2.pdf', 'wb') as part2_file:
         part2_pdf_writer.write(part2_file)
 
